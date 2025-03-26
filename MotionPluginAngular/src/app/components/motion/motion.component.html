@@ -2,18 +2,34 @@
   <div class="sensor-section">
     <h2>Acelerómetro</h2>
     <div class="sensor-data">
-      <p>X: {{motionData.acceleration?.x ?? 'No data'}}</p>
-      <p>Y: {{motionData.acceleration?.y ?? 'No data'}}</p>
-      <p>Z: {{motionData.acceleration?.z ?? 'No data'}}</p>
+      <p>X: {{motionData.acceleration?.x?.toFixed(2) ?? 'No data'}}</p>
+      <p>Y: {{motionData.acceleration?.y?.toFixed(2) ?? 'No data'}}</p>
+      <p>Z: {{motionData.acceleration?.z?.toFixed(2) ?? 'No data'}}</p>
     </div>
   </div>
 
   <div class="sensor-section">
     <h2>Giroscopio</h2>
     <div class="sensor-data">
-      <p>Alpha: {{motionData.rotation?.alpha ?? 'No data'}}°</p>
-      <p>Beta: {{motionData.rotation?.beta ?? 'No data'}}°</p>
-      <p>Gamma: {{motionData.rotation?.gamma ?? 'No data'}}°</p>
+      <p>Alpha: {{motionData.rotation?.alpha?.toFixed(2) ?? 'No data'}}°</p>
+      <p>Beta: {{motionData.rotation?.beta?.toFixed(2) ?? 'No data'}}°</p>
+      <p>Gamma: {{motionData.rotation?.gamma?.toFixed(2) ?? 'No data'}}°</p>
+    </div>
+  </div>
+
+  <div class="sensor-section highlight">
+    <h2>Ángulos de Inclinación</h2>
+    <div class="sensor-data">
+      <p>Pitch (adelante/atrás): {{motionData.inclination?.pitch ?? 'No data'}}°</p>
+      <p>Roll (lateral): {{motionData.inclination?.roll ?? 'No data'}}°</p>
+    </div>
+    
+    <div class="device-visualization">
+      <div class="device" 
+           [style.transform]="'rotateX(' + (motionData.inclination?.pitch ?? 0) + 'deg) rotateY(' + (motionData.inclination?.roll ?? 0) + 'deg)'">
+        <div class="screen"></div>
+      </div>
     </div>
   </div>
 </div>
+
